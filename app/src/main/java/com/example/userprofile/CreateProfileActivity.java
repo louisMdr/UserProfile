@@ -117,13 +117,22 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date = month + "/" + dayOfMonth + "/" + year;
+
         // Only set date if user is 13 or up
-        if (getAge(year, month, dayOfMonth) < 13){
-            editDOB.setError("Invalid Age! You are too young to create a profile");
-            editDOB.requestFocus();
-            Toast.makeText(this, "Invalid Age! You are too young to create a profile", Toast.LENGTH_LONG).show();
-        } else {
-            editDOB.setText(date);
+        boolean invalidAge = true;
+
+        // Continue to prompt user to set a valid DOB
+        while (invalidAge) {
+            if (getAge(year, month, dayOfMonth) < 13){
+                editDOB.setError("Invalid Age! You are too young to create a profile");
+                editDOB.requestFocus();
+                Toast.makeText(this, "Invalid Age! You are too young to create a profile", Toast.LENGTH_LONG).show();
+            }
+            // Set boolean to false to break out of loop
+            else {
+                invalidAge = false;
+                editDOB.setText(date);
+            }
         }
     }
 
