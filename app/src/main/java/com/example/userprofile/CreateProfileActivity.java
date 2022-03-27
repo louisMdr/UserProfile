@@ -2,22 +2,30 @@ package com.example.userprofile;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.Calendar;
+import android.widget.LinearLayout;
 
 public class CreateProfileActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     private EditText editFullName, editDOB, editWeight;
+    final String decimal[] = {".0",".1",".2",".3",".4",".5",".6",".7",".8",".9"};
+    final String metric[] ={"kg"};
     private RadioGroup radioGroupGender;
     private RadioButton radioGroupGenderSelected;
     private RadioButton radioButtonMale;
@@ -48,6 +56,13 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
+            }
+        });
+
+        editWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showWeightPickerDialog();
             }
         });
 
@@ -84,19 +99,12 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
                     editWeight.requestFocus();
                 } else {
                     textGender = radioGroupGenderSelected.getText().toString();
-                    weight = Double.parseDouble(textWeight);
-                    // Average weight for 13 year olds is ~45 kg and Max weight for average bike ~136 kg
-                    if (weight >= 45 && weight <= 136) {
-                        user = new User(textFN,textDOB,textGender,weight);
-                        saveProfile(user);
-                        // Redirect to view profile page
-                        Intent displayProfileIntent = new Intent(CreateProfileActivity.this , DisplayProfileActivity.class);
-                        startActivity(displayProfileIntent);
-                    } else {
-                        Toast.makeText(CreateProfileActivity.this,"Invalid weight", Toast.LENGTH_LONG).show();
-                        editWeight.setError("Weight is required");
-                        editWeight.requestFocus();
-                    }
+                    weight = Double.parseDouble(textWeight.substring(0, textWeight.length()-3));
+                    user = new User(textFN,textDOB,textGender,weight);
+                    saveProfile(user);
+                    // Redirect to view profile page
+                    Intent displayProfileIntent = new Intent(CreateProfileActivity.this , DisplayProfileActivity.class);
+                    startActivity(displayProfileIntent);
                 }
             }
         });
@@ -112,6 +120,51 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         );
         datePickerDialog.show();
+    }
+
+    //Source code inspired from https://stackoverflow.com/questions/45812624/how-to-display-number-pickers-in-pop-up-window
+    private void showWeightPickerDialog()
+    {
+        //Read from xml layout file
+        //create and link number pickers to layout
+        final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.view_number_dialog, null);
+        NumberPicker picker1 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
+        NumberPicker picker2 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker2);
+        NumberPicker picker3 = (NumberPicker) linearLayout.findViewById(R.id.numberPicker3);
+
+        //set int constraints
+        picker1.setMinValue(40);
+        picker1.setMaxValue(136);
+        picker1.setValue(40);
+        //set decimal constraints from list
+        picker2.setMinValue(0);
+        picker2.setMaxValue(decimal.length - 1);
+        picker2.setDisplayedValues(decimal);
+        picker2.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        //set metric constraints from list
+        picker3.setMinValue(0);
+        picker3.setMaxValue(metric.length - 1);
+        picker3.setDisplayedValues(metric);
+        picker3.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        //Finally building an AlertDialog
+        AlertDialog builder = new AlertDialog.Builder(this)
+                .setPositiveButton("Submit", null)
+                .setNegativeButton("Cancel", null)
+                .setView(linearLayout)
+                .setCancelable(false)
+                .create();
+        builder.show();
+        //Setting up OnClickListener on positive button of AlertDialog
+        builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //modify input
+                String result = String.valueOf(picker1.getValue()) + decimal[picker2.getValue()] + " " + metric[picker3.getValue()];
+                editWeight.setText(result);
+                //close the popup
+                builder.cancel();
+            }
+        });
     }
 
     @Override
