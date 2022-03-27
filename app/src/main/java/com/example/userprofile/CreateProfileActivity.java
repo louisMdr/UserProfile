@@ -25,7 +25,7 @@ import android.widget.LinearLayout;
 public class CreateProfileActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     private EditText editFullName, editDOB, editWeight;
     final String decimal[] = {".0",".1",".2",".3",".4",".5",".6",".7",".8",".9"};
-    final String metric[] ={"kg"};
+    final String metric[] ={"kg", "lbs"};
     private RadioGroup radioGroupGender;
     private RadioButton radioGroupGenderSelected;
     private RadioButton radioButtonMale;
@@ -154,6 +154,42 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
                 .setCancelable(false)
                 .create();
         builder.show();
+
+        picker3.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+                                          {
+                                              @Override
+                                              public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue)
+                                              {
+                                                  if(newValue == 1)
+                                                  {
+                                                      double value = picker1.getValue() + picker2.getValue()/10.0;
+                                                      double total = value*2.20462262185;
+                                                      int full = (int) total;
+                                                      double decimal = round(total - full, 1);
+                                                      int decimalIndex = (decimal + "").charAt(2) - '0';
+                                                      picker1.setMinValue(88);
+                                                      picker1.setMaxValue(300);
+                                                      picker1.setValue(full);
+                                                      picker2.setValue(decimalIndex);
+
+                                                  }
+                                                  else
+                                                  {
+                                                      double value = picker1.getValue() + picker2.getValue()/10.0;
+                                                      double total = value/2.20462262185;
+                                                      int full = (int) total;
+                                                      double decimal = round(total - full, 1);
+                                                      int decimalIndex = (decimal + "").charAt(2) - '0';
+
+                                                      picker1.setMinValue(40);
+                                                      picker1.setMaxValue(136);
+                                                      picker1.setValue(full);
+                                                      picker2.setValue(decimalIndex);
+                                                  }
+                                              }
+                                          }
+        );
+
         //Setting up OnClickListener on positive button of AlertDialog
         builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,6 +201,11 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
                 builder.cancel();
             }
         });
+    }
+    //Code used from: https://stackoverflow.com/questions/22186778/using-math-round-to-round-to-one-decimal-place
+    private static double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
     }
 
     @Override

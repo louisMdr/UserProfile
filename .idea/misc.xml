@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/UserProfile/app/src/main/res/layout/activity_create_profile.xml" value="0.2015625" />
+        <entry key="..\:/AndroidProjects/UserProfile/app/src/main/res/layout/view_number_dialog.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Mk/AndroidStudioProjects/UserProfile/app/src/main/res/layout/activity_create_profile.xml" value="0.44695898161244696" />
         <entry key="..\:/Users/Mk/AndroidStudioProjects/UserProfile/app/src/main/res/layout/activity_display_profile.xml" value="0.9" />
         <entry key="..\:/Users/Mk/AndroidStudioProjects/UserProfile/app/src/main/res/layout/activity_main.xml" value="0.33" />
