@@ -17,16 +17,17 @@
             android:id="@+id/createProfileHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please enter your details to create a profile"
+            android:text="@string/create_page_title"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="*required"
+        android:text="@string/required"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:padding="8dp"
-        android:text="Full Name*"
+        android:text="@string/full_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
@@ -45,7 +46,7 @@
         android:id="@+id/editFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your full name"
+        android:hint="@string/full_name_hint"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="8dp"
@@ -59,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Date of Birth*"
+        android:text="@string/date_of_birth"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/editFullName" />
 
@@ -67,7 +68,7 @@
         android:id="@+id/editDOB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your birthdate (mm/dd/yyyy)"
+        android:hint="@string/date_of_birth_hint"
         android:inputType="date"
         android:focusable="false"
         android:minHeight="48dp"
@@ -80,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Gender*"
+        android:text="@string/gender"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDOB" />
@@ -100,7 +101,7 @@
             android:id="@+id/radioButtonMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"
+            android:text="@string/male"
             android:paddingRight="8dp"
             android:textStyle="bold" />
 
@@ -108,7 +109,7 @@
             android:id="@+id/radioButtonFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female"
+            android:text="@string/female"
             android:textStyle="bold" />
 
     </RadioGroup>
@@ -118,7 +119,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Weight*"
+        android:text="@string/weight"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupGender" />
 
@@ -127,7 +128,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:hint="Enter your weight (in kg or lbs)"
+        android:hint="@string/weight_hint"
         android:inputType="none"
         android:longClickable="false"
         android:minHeight="48dp"
@@ -140,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Save"
+        android:text="@string/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editWeight" />

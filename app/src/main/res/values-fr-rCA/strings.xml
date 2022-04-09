@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Profil de l\'utilisateur</string>
+    <string name="create_profile">Créer un profil</string>
+    <string name="user_settings">Paramètres utilisateur</string>
+    <string name="view_profile">Voir le profil</string>
+    <string name="delete_profile">Supprimer le profil</string>
+    <string name="general_settings">Réglages généraux</string>
+    <string name="create_page_title">Veuillez saisir vos informations pour créer un profil</string>
+    <string name="required">*obligatoire</string>
+    <string name="full_name">Nom et prénom*</string>
+    <string name="date_of_birth">Date de naissance*</string>
+    <string name="gender">Le sexe*</string>
+    <string name="weight">Masse*</string>
+    <string name="save_button">Sauver</string>
+    <string name="main_settings">Réglages principaux</string>
+    <string name="edit_button">Modifier</string>
+    <string name="language_options">Options de langue</string>
+    <string name="voice_feedback_options">Options de retour vocal</string>
+    <string name="set_speech_rate">Définir le débit de parole</string>
+    <string name="set_pitch_rate">Définir le taux de pitch</string>
+    <string name="test_tts_button">Tester TTS</string>
+    <string name="full_name_hint">Entrez votre nom complet</string>
+    <string name="date_of_birth_hint">Entrez votre date de naissance (mm/dd/yyyy)</string>
+    <string name="male">Mâle</string>
+    <string name="female">Femelle</string>
+    <string name="weight_hint">Entrez votre poids (en kg ou lbs)</string>
+    <string name="tts_hint">Entrer du texte pour parler</string>
+</resources>

@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button settingsBtn = findViewById(R.id.generalSettingsButton);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // opening a new intent to open settings activity.
+                Intent i = new Intent(MainActivity.this, GeneralSettings.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 }

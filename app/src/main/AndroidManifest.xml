@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UserProfile">
         <activity
+            android:name=".GeneralSettings"
+            android:exported="false" />
+        <activity
             android:name=".DisplayProfileActivity"
             android:exported="false" />
         <activity
@@ -25,5 +28,9 @@
             </intent-filter>
         </activity>
     </application>
-
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 </manifest>

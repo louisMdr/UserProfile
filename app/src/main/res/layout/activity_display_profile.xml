@@ -7,12 +7,12 @@
     tools:context=".DisplayProfileActivity">
 
     <TextView
-        android:id="@+id/fullNameLabel"
+        android:id="@+id/tVSpeechRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
-        android:text="Full Name"
+        android:text="@string/full_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,9 +26,9 @@
         android:textFontWeight="2"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/fullNameLabel"
-        app:layout_constraintStart_toEndOf="@+id/fullNameLabel"
-        app:layout_constraintTop_toTopOf="@+id/fullNameLabel" />
+        app:layout_constraintBottom_toBottomOf="@+id/tVSpeechRate"
+        app:layout_constraintStart_toEndOf="@+id/tVSpeechRate"
+        app:layout_constraintTop_toTopOf="@+id/tVSpeechRate" />
 
 
     <TextView
@@ -36,10 +36,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Date of Birth"
+        android:text="@string/date_of_birth"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="@+id/fullNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameLabel" />
+        app:layout_constraintStart_toStartOf="@+id/tVSpeechRate"
+        app:layout_constraintTop_toBottomOf="@+id/tVSpeechRate" />
 
     <TextView
         android:id="@+id/tvDob"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Gender"
+        android:text="@string/gender"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="@+id/dateOfBirthLabel"
         app:layout_constraintTop_toBottomOf="@+id/dateOfBirthLabel" />
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:inputType="numberDecimal"
-        android:text="Weight"
+        android:text="@string/weight"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="@+id/genderLabel"
         app:layout_constraintTop_toBottomOf="@+id/genderLabel" />
@@ -100,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Main Settings"
+        android:text="@string/main_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Edit"
+        android:text="@string/edit_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWeight" />
