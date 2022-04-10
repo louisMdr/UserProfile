@@ -3,7 +3,11 @@ package com.example.userprofile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,12 +15,17 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
+    LanguageManager lang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = getSharedPreferences("general_settings", MODE_PRIVATE);
+        String selectedLanguage = prefs.getString("lang_code", "en");
+        lang = new LanguageManager(this);
+        lang.updateResource(selectedLanguage);
         setContentView(R.layout.activity_main);
 
         // Set title

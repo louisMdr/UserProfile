@@ -59,18 +59,18 @@ public class GeneralSettings extends AppCompatActivity {
 
                 if (selectedLang.equals("en")){
                     lang.updateResource("en");
-                    Intent intent = new Intent(GeneralSettings.this, MainActivity.class);
-                    startActivity(intent);
+                    editor.putString("lang_code", selectedLang);  // Saving string
+                    recreate();
                 } else if (selectedLang.equals("fr")){
                     lang.updateResource("fr");
-                    Intent intent = new Intent(GeneralSettings.this, MainActivity.class);
-                    startActivity(intent);
+                    editor.putString("lang_code", selectedLang);  // Saving string
+                    recreate();
                 } else {
                     Toast.makeText(GeneralSettings.this, "Please select a language",Toast.LENGTH_SHORT).show();
                 }
-
                 editor.putInt(LANG_PROGRESS, languageSpinner.getSelectedItemPosition());
-                editor.commit();
+                editor.commit(); // Save to file
+                languageSpinner.setSelection(0);
             }
 
             @Override
@@ -147,6 +147,7 @@ public class GeneralSettings extends AppCompatActivity {
                 editor.commit();
             }
         });
+
     }
     private void speak() {
         String text = eTTest.getText().toString();
@@ -169,4 +170,10 @@ public class GeneralSettings extends AppCompatActivity {
         }
         super.onDestroy();
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
 }
