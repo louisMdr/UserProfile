@@ -42,7 +42,7 @@ public class DisplayProfileActivity extends AppCompatActivity {
             gender.setText(u.getGender());
 
             weight = findViewById(R.id.tvWeight);
-            String textWeight = String.valueOf(u.getWeight());
+            String textWeight = String.valueOf(u.getWeightValue()) + " " + u.getWeightUnit();
             weight.setText(textWeight);
 
         } catch(Exception e) {
