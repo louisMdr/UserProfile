@@ -31,6 +31,7 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
     private RadioButton radioButtonMale;
     User user;
     private double weight;
+    private String unit;
     protected static final String PROFILE_FILE_NAME = "profile.xml";
 
     @Override
@@ -99,8 +100,10 @@ public class CreateProfileActivity extends AppCompatActivity implements DatePick
                     editWeight.requestFocus();
                 } else {
                     textGender = radioGroupGenderSelected.getText().toString();
-                    weight = Double.parseDouble(textWeight.substring(0, textWeight.length()-3));
-                    user = new User(textFN,textDOB,textGender,weight);
+                    String[] weightResults = textWeight.split(" ");
+                    weight = Double.parseDouble(weightResults[0]);
+                    unit = weightResults[1];
+                    user = new User(textFN,textDOB,textGender,weight, unit);
                     saveProfile(user);
                     // Redirect to view profile page
                     Intent displayProfileIntent = new Intent(CreateProfileActivity.this , DisplayProfileActivity.class);
