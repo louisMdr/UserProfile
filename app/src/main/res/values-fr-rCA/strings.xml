@@ -24,6 +24,10 @@
     <string name="date_of_birth_hint">Entrez votre date de naissance (mm/dd/yyyy)</string>
     <string name="male">Mâle</string>
     <string name="female">Femelle</string>
+    <string name="miles">"Milles"</string>
+    <string name="kilometers">"Kilomètres"</string>
     <string name="weight_hint">Entrez votre poids (en kg ou lbs)</string>
     <string name="tts_hint">Entrer du texte pour parler</string>
+    <string name="unit_options">"Options d'unité"</string>
+
 </resources>

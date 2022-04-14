@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,10 +23,14 @@ import java.util.Locale;
 public class GeneralSettings extends AppCompatActivity {
     private SeekBar seekSB;
     private SeekBar seekPB;
+    private RadioGroup radioGroupUnits;
+    private RadioButton radioButtonMiles;
+    private RadioButton radioButtonKM;
     private SharedPreferences preferences;
     private static final String SB_PROGRESS = "sb_progress";
     private static final String PB_PROGRESS = "pb_progress";
     private static final String LANG_PROGRESS = "spinner_progress";
+    private static final String UNIT_PROGRESS = "unit_progress";
     EditText eTTest;
     private TextToSpeech tts;
     private static final String[] languages = new String[]{"Language","en", "fr"};
@@ -43,6 +49,32 @@ public class GeneralSettings extends AppCompatActivity {
 
         preferences = getSharedPreferences("general_settings",MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
+
+        // UNIT OPTIONS
+        int unitSelected = preferences.getInt(UNIT_PROGRESS,3);
+        radioGroupUnits = findViewById(R.id.radioGroupUnits);
+        radioButtonMiles = findViewById(R.id.radioButtonMiles);
+        radioButtonKM = findViewById(R.id.radioButtonKM);
+
+        if(unitSelected == 1){
+            radioButtonMiles.setChecked(true);
+        } else if(unitSelected == 0){
+            radioButtonKM.setChecked(true);
+        }
+
+        radioGroupUnits.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i == R.id.radioButtonMiles){
+                    editor.putInt(UNIT_PROGRESS,1);
+                }else if(i == R.id.radioButtonKM){
+                    editor.putInt(UNIT_PROGRESS,0);
+                }
+                editor.commit();
+            }
+        });
+
+        // LANGUAGE OPTIONS
         lang = new LanguageManager(this);
 
         // Source code taken from https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
@@ -79,7 +111,7 @@ public class GeneralSettings extends AppCompatActivity {
             }
         });
 
-
+        // VOICE FEEDBACK OPTIONS
         // Source code taken from https://gist.github.com/codinginflow/3091cb7f7d165359da1b173794094752
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -175,5 +207,4 @@ public class GeneralSettings extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(this, MainActivity.class));
     }
-
 }

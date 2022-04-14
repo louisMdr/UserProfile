@@ -26,6 +26,9 @@
     <string name="edit_button">"Edit"</string>
 
 <!--    general settings page-->
+    <string name="unit_options">"Unit Options"</string>
+    <string name="miles">"Miles"</string>
+    <string name="kilometers">"Kilometers"</string>
     <string name="language_options">"Language Options"</string>
     <string name="voice_feedback_options">"Voice Feedback Options"</string>
     <string name="set_speech_rate">"Set Speech Rate"</string>
