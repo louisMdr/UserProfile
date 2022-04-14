@@ -12,10 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -31,10 +33,13 @@ public class GeneralSettings extends AppCompatActivity {
     private static final String PB_PROGRESS = "pb_progress";
     private static final String LANG_PROGRESS = "spinner_progress";
     private static final String UNIT_PROGRESS = "unit_progress";
+    private static final String FREQ_PROGRESS = "freq_progress";
     EditText eTTest;
+    TextView tvGPSFreqSelected;
     private TextToSpeech tts;
     private static final String[] languages = new String[]{"Language","en", "fr"};
     Spinner languageSpinner;
+    NumberPicker gpsNumberPicker;
     LanguageManager lang;
 
     @Override
@@ -44,12 +49,6 @@ public class GeneralSettings extends AppCompatActivity {
 
         // Set title
         getSupportActionBar().setTitle("General Settings");
-
-        seekSB = findViewById(R.id.sBSpeechRate);
-        seekPB = findViewById(R.id.sBPitchRate);
-        eTTest = findViewById(R.id.eTTest);
-        Button textToSpeechButton = findViewById(R.id.testButton);
-
         preferences = getSharedPreferences("general_settings",MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
 
@@ -114,7 +113,28 @@ public class GeneralSettings extends AppCompatActivity {
             }
         });
 
+        // GPS FREQUENCY OPTIONS
+        gpsNumberPicker = findViewById(R.id.GPSNumberPicker);
+        gpsNumberPicker.setMaxValue(15);
+        gpsNumberPicker.setMinValue(0);
+        tvGPSFreqSelected = findViewById(R.id.tvGPSFreqSelected);
+        gpsNumberPicker.setValue(preferences.getInt(FREQ_PROGRESS,0));
+        tvGPSFreqSelected.setText("Freq: " + preferences.getInt(FREQ_PROGRESS,0));
+        gpsNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int oldValue, int newValue) {
+                editor.putInt(FREQ_PROGRESS,newValue);
+                gpsNumberPicker.setValue(newValue);
+                tvGPSFreqSelected.setText("Freq: " + newValue);
+                editor.commit();
+            }
+        });
+
         // VOICE FEEDBACK OPTIONS
+        seekSB = findViewById(R.id.sBSpeechRate);
+        seekPB = findViewById(R.id.sBPitchRate);
+        eTTest = findViewById(R.id.eTTest);
+        Button textToSpeechButton = findViewById(R.id.testButton);
         // Source code taken from https://gist.github.com/codinginflow/3091cb7f7d165359da1b173794094752
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override

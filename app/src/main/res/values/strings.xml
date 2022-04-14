@@ -31,8 +31,10 @@
     <string name="kilometers">"Kilometers"</string>
     <string name="language_options">"Language Options"</string>
     <string name="voice_feedback_options">"Voice Feedback Options"</string>
+    <string name="gps_freq">"GPS Frequency"</string>
     <string name="set_speech_rate">"Set Speech Rate"</string>
     <string name="set_pitch_rate">"Set Pitch Rate"</string>
     <string name="tts_hint">"Enter Text to Speak"</string>
     <string name="test_tts_button">"Test TTS"</string>
+
 </resources>

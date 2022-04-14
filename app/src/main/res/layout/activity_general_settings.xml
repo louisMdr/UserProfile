@@ -44,7 +44,6 @@
 
     </RadioGroup>
 
-
     <TextView
         android:id="@+id/tvLanguageOptions"
         android:layout_width="match_parent"
@@ -139,5 +138,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eTTest" />
+
+    <TextView
+        android:id="@+id/tvGPSFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/gps_freq"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@+id/testButton" />
+
+    <TextView
+        android:id="@+id/tvGPSFreqSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvGPSFreq"
+        app:layout_constraintTop_toBottomOf="@+id/testButton" />
+
+    <NumberPicker
+        android:id="@+id/GPSNumberPicker"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGPSFreq" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

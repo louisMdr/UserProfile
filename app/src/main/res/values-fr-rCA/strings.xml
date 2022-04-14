@@ -29,5 +29,5 @@
     <string name="weight_hint">Entrez votre poids (en kg ou lbs)</string>
     <string name="tts_hint">Entrer du texte pour parler</string>
     <string name="unit_options">"Options d'unité"</string>
-
+    <string name="gps_freq">"Fréquence GPS"</string>
 </resources>
