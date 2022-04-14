@@ -42,6 +42,9 @@ public class GeneralSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_settings);
 
+        // Set title
+        getSupportActionBar().setTitle("General Settings");
+
         seekSB = findViewById(R.id.sBSpeechRate);
         seekPB = findViewById(R.id.sBPitchRate);
         eTTest = findViewById(R.id.eTTest);

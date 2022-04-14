@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".GeneralSettings">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/createProfileHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/general_settings"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-    </RelativeLayout>
-
     <TextView
         android:id="@+id/tvUnitOptions"
         android:layout_width="wrap_content"
@@ -29,8 +13,9 @@
         android:padding="8dp"
         android:text="@string/unit_options"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/tvLanguageOptions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroupUnits"
@@ -40,15 +25,14 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/tvUnitOptions"
         app:layout_constraintStart_toEndOf="@+id/tvUnitOptions"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="0.0">
 
         <RadioButton
             android:id="@+id/radioButtonMiles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/miles"
             android:paddingRight="8dp"
+            android:text="@string/miles"
             android:textStyle="bold" />
 
         <RadioButton
@@ -65,11 +49,11 @@
         android:id="@+id/tvLanguageOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:padding="8dp"
         android:text="@string/language_options"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupUnits" />
+
     <Spinner
         android:id="@+id/languageSpinner"
         android:layout_width="match_parent"
@@ -82,7 +66,6 @@
         android:id="@+id/tvVoiceFeedBackOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:padding="8dp"
         android:text="@string/voice_feedback_options"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -137,12 +120,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/sBPitchRate"
         android:layout_marginTop="32dp"
-        android:padding="8dp"
         android:hint="@string/tts_hint"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="@+id/tVPitchRate"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tVPitchRate"
         app:layout_constraintTop_toBottomOf="@+id/tVPitchRate">
+
         <requestFocus />
     </EditText>
 
@@ -150,7 +134,6 @@
         android:id="@+id/testButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:enabled="false"
         android:text="@string/test_tts_button"
         app:layout_constraintEnd_toEndOf="parent"
