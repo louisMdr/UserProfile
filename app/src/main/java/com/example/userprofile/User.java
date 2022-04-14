@@ -6,13 +6,15 @@ public class User implements Serializable {
     private String fullName;
     private String dob;
     private String gender;
-    private double weight;
+    private double weightVal;
+    private String weightUnit;
 
-    public User(String fullName, String dob, String gender, double weight) {
+    public User(String fullName, String dob, String gender, double weight, String unit) {
         this.fullName = fullName;
         this.dob = dob;
         this.gender = gender;
-        this.weight = weight;
+        this.weightVal = weight;
+        this.weightUnit = unit;
     }
 
     public String getFullName() {
@@ -39,16 +41,24 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getWeightValue() {
+        return weightVal;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setWeightValue(double weight) {
+        this.weightVal = weight;
+    }
+
+    public String getWeightUnit() {
+        return weightUnit;
+    }
+
+    public void setWeightUnit(String unit) {
+        this.weightUnit = unit;
     }
 
     @Override
     public String toString() {
-        return "User {fullName: " + fullName + ", date of birth: " + dob + ", gender: " + gender + ", weight: " + weight + "}";
+        return "User {fullName: " + fullName + ", date of birth: " + dob + ", gender: " + gender + ", weight: " + weightVal + " " + weightUnit + "}";
     }
 }
